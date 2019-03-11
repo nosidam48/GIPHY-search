@@ -1,3 +1,5 @@
-<p>
-  my-gifs works!
-</p>
+<div class="gif-div" style="text-align: center" *ngFor="let g of gifs">
+    <img class="gif-image" id="{{g.id}}" [attr.data-still]="g.images.fixed_height_still.url" [attr.data-animate]="g.images.fixed_height.url" [attr.data-state]="still" src="{{g.images.fixed_height_still.url}}">
+    <p>{{g.title}}, Rating: {{g.rating}}</p>
+    <button class="add-gif">Add to My Gifs</button>
+</div>

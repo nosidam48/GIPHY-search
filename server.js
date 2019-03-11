@@ -5,8 +5,10 @@ const express = require('express'),
       mongoose = require('mongoose'),
       config = require('./config/DB');
 
+      const gifRoute = require('./Routes/gifRoutes');
+
       mongoose.Promise = global.Promise;
-      mongoose.connect(config.DB).then(
+      mongoose.connect(config.DB, { useNewUrlParser: true }).then(
           () => {console.log('Database is connected') },
           err => { console.log('Can not connect to the database'+ err)}
         );
@@ -14,6 +16,7 @@ const express = require('express'),
       const app = express();
       app.use(bodyParser.json());
       app.use(cors());
+      app.use("/gifs", gifRoute)
       const port = process.env.PORT || 4000;
 
        const server = app.listen(port, function(){

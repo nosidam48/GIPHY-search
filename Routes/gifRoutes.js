@@ -19,43 +19,18 @@ gifRoutes.route('/add').post(function (req, res) {
 
 // Defined get data(index or listing) route
 gifRoutes.route('/mygifs').get(function (req, res) {
-   Gif.find(function (err, coins){
+   Gif.find(function (err, gifs){
     if(err){
       console.log(err);
     }
     else {
-      res.json(coins);
+      console.log(gifs);
+      
+      res.json(gifs);
     }
   });
 });
 
-// Defined edit route
-gifRoutes.route('/edit/:id').get(function (req, res) {
-  var id = req.params.id;
-  Gif.findById(id, function (err, gif){
-      res.json(gif);
-  });
-});
-
-//  Defined update route
-gifRoutes.route('/update/:id').post(function (req, res) {
-   Gif.findById(req.params.id, function(err, gif) {
-    if (!gif)
-      return next(new Error('Could not load Document'));
-    else {
-      gif.url = req.body.url;
-      gif.title = req.body.title;
-      gif.rating = req.body.rating;
-
-      gif.save().then(gif => {
-          res.json('Update complete');
-      })
-      .catch(err => {
-            res.status(400).send("unable to update the database");
-      });
-    }
-  });
-});
 
 // Defined delete | remove | destroy route
 gifRoutes.route('/delete/:id').get(function (req, res) {

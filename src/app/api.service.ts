@@ -5,14 +5,15 @@ import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
-export class GifService {
+export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  addGif(url, title, rating) {
-    const uri = 'http://localhost:4000/coins/add';
+  addGif(urlStill, urlAnimate, title, rating) {
+    const uri = 'http://localhost:4000/gifs/add';
     const obj = {
-      url: url,
+      urlStill: urlStill,
+      urlAnimate: urlAnimate,
       title: title,
       rating: rating
     };
@@ -20,23 +21,13 @@ export class GifService {
         .subscribe(res => console.log('Done'));
   }
 
-  getCoins() {
-    const uri = 'http://localhost:4000/coins';
+  getGifs() {
+    const uri = 'http://localhost:4000/gifs';
     return this
             .http
             .get(uri)
-            .map(res => {
+            .pipe(map(res => {
               return res;
-            });
-  }
-
-  editCoin(id) {
-    const uri = 'http://localhost:4000/coins/edit/' + id;
-    return this
-            .http
-            .get(uri)
-            .map(res => {
-              return res;
-            });
+            }));
   }
 }

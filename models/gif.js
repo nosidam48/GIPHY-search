@@ -3,8 +3,11 @@ var Schema = mongoose.Schema;
 
 // Define collection and schema for Items
 var Gif = new Schema({
-  url: {
+  urlStill: {
     type: String
+  },
+  urlAnimate: {
+      type: String
   },
   title: {
     type: String
@@ -13,7 +16,7 @@ var Gif = new Schema({
     type: String
   }
 },{
-    collection: 'gifs'
+    collection: 'mygifs'
 });
 
 module.exports = mongoose.model('Gif', Gif);

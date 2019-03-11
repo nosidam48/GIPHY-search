@@ -6,7 +6,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: '/gifs', pathMatch: 'full' },
-  { path: 'gifs/saved', component: MyGifsComponent },
+  { path: 'gifs/mygifs', component: MyGifsComponent },
   { path: 'gifs', component: GifSearchComponent },
 ];
 
