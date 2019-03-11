@@ -1,4 +1,4 @@
-#GIPHY search
+# GIPHY search
 
 ### A gif search based on user input using the GIPHY API
 
