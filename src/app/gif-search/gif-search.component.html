@@ -1,0 +1,11 @@
+<div style="text-align: center">
+<input name="search" #searchTerm>
+
+<button class="search" (click)="performSearch(searchTerm)">Search</button>
+</div>
+
+<div class="gif-div" style="text-align: center" *ngFor="let g of giphies">
+    <img class="gif-image" id="{{g.id}}" [attr.data-still]="g.images.fixed_height_still.url" [attr.data-animate]="g.images.fixed_height.url" [attr.data-state]="still" src="{{g.images.fixed_height_still.url}}">
+    <p>{{g.title}}, Rating: {{g.rating}}</p>
+    <button class="add-gif" id="{{g.id}}" [attr.data-still]="g.images.fixed_height_still.url" [attr.data-animate]="g.images.fixed_height.url" [attr.data-state]="still" [attr.title]="g.title" [attr.rating]="g.rating">Add to My Gifs</button>
+</div>
