@@ -10,7 +10,7 @@ import { defineBase } from '@angular/core/src/render3';
 })
 export class GifSearchComponent implements OnInit {
   title = 'GIPHY search';
-  link = "http://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=";
+  link = "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=";
   giphies = [];
   
   constructor(
@@ -21,7 +21,7 @@ export class GifSearchComponent implements OnInit {
      var apiLink = this.link + searchTerm.value + "&limit=10";
     console.log(`User entered: ${searchTerm.value}`);
 
-  this.http.get(apiLink).subscribe((res: Response) => {
+  this.http.get(apiLink).subscribe((res: any) => {
     this.giphies = res.data;
     console.log(this.giphies)
   });
